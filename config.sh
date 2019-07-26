@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PATH=$PATH:/home/madeesha/Documents/engagement/unisys/CICDflow/cli/product-apim-tooling/import-export-cli
+#export PATH=$PATH:/home/madeesha/Documents/engagement/unisys/CICDflow/cli/product-apim-tooling/import-export-cli
 
 echo $(which apimcli)
 
