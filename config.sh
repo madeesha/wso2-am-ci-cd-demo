@@ -2,7 +2,7 @@
 
 echo $(which apimcli)
 mysql --version
-#apimcli version
+apimcli version
 
 #rm -rf $HOME/.wso2apimcli
 #
