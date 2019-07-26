@@ -12,6 +12,16 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Test') {
+            environment{
+                ENV = 'test'
+                RETRY = '80'
+            }
+            steps {
+                echo 'Deploying to Test'
+                sh 'apimcli import-api -f $API -e $ENV -k --preserve-provider=false --update --verbose'
+            }
+        }
         stage('Deploy to Production') {
             environment{
                 ENV = 'prod'
