@@ -18,7 +18,7 @@ apimcli add-env -n test \
                     --api_list https://localhost:9444/api/am/publisher/v0.14/apis \
                     --app_list https://localhost:9444/api/am/store/v0.14/applications
 echo 'logging into test'
-apimcli login test -u USERNAME -p PASSWORD -k
+apimcli login test -u $USERNAME -p $PASSWORD -k
 
 echo 'setting up prod environment'
 apimcli add-env -n prod \
@@ -30,4 +30,4 @@ apimcli add-env -n prod \
                     --api_list https://localhost:9445/api/am/publisher/v0.14/apis \
                     --app_list https://localhost:9445/api/am/store/v0.14/applications
 echo 'logging into prod'
-apimcli login prod -u USERNAME -p PASSWORD -k
+apimcli login prod -u $USERNAME -p $PASSWORD -k
