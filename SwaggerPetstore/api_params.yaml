@@ -1,14 +1,14 @@
 environments:
-  - name: dev
-    endpoints:
-      production:
-        url: 'https://dev.wso2.com'
-        config:
-          retryTimeOut: $RETRY
   - name: test
     endpoints:
       production:
         url: 'https://test.wso2.com'
+        config:
+          retryTimeOut: $RETRY
+  - name: staging
+    endpoints:
+      production:
+        url: 'https://staging.wso2.com'
         config:
           retryTimeOut: $RETRY
   - name: prod
