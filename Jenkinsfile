@@ -22,6 +22,16 @@ pipeline {
                 sh 'apimcli import-api -f $API -e $ENV -k --preserve-provider=false --update --verbose'
             }
         }
+        stage('Deploy to Staging') {
+            environment{
+                ENV = 'staging'
+                RETRY = '80'
+            }
+            steps {
+                echo 'Deploying to Staging'
+                sh 'apimcli import-api -f $API -e $ENV -k --preserve-provider=false --update --verbose'
+            }
+        }
         stage('Deploy to Production') {
             environment{
                 ENV = 'prod'
