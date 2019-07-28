@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         CI = 'true'
-        API = './SwaggerPetstore'
+        API = './SampleAPI'
     }
     stages {
         stage('Setup APIM Environments'){
