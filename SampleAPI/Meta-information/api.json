@@ -1,0 +1,17 @@
+{
+  "id": {
+    "providerName": "admin",
+    "apiName": "madeesha",
+    "version": "1.0.0"
+  },
+  "type": "HTTP",
+  "context": "/m",
+  "availableTiers": [
+    {
+      "name": "Unlimited"
+    }
+  ],
+  "status": "PUBLISHED",
+  "visibility": "public",
+  "transports": "http,https"
+}
