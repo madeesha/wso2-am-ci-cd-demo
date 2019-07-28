@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    def list = ["./SampleAPI", "./SwaggerPetstore"]
-  for (item in list) {
+  list = ["./SampleAPI", "./SwaggerPetstore"]
+  list.each { item ->
     environment {
         CI = 'true'
-        API = item
+        API = ${item}
     }
     stages {
         stage('Setup APIM Environments'){
