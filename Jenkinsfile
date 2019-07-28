@@ -1,8 +1,10 @@
 pipeline {
     agent any
+    def list = ["./SampleAPI"]
+  for (item in list) {
     environment {
         CI = 'true'
-        API = './SampleAPI'
+        API = item
     }
     stages {
         stage('Setup APIM Environments'){
@@ -43,4 +45,6 @@ pipeline {
             }
         }
     }
+
+  }
 }
