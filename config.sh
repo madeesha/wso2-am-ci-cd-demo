@@ -1,7 +1,6 @@
 #!/bin/sh
 
 echo $(which apimcli)
-
 apimcli version
 
 rm -rf $HOME/.wso2apimcli
