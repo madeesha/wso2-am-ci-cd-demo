@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    def list = ["./SampleAPI"]
+    def list = ["./SampleAPI", "./SwaggerPetstore"]
   for (item in list) {
     environment {
         CI = 'true'
