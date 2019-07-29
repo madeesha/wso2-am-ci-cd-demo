@@ -11,55 +11,35 @@ node('master') {
     }
 
     stage('Deploying to Test') {
-        loop_of_sh(abcs)
-    }
-
-    stage('Deploying to Staging') {
-        loop_with_preceding_sh(abcs)
-    }
-
-    stage('Deploying to Production') {
-        traditional_int_for_loop(abcs)
-    }
-}
-
-@NonCPS // has to be NonCPS or the build breaks on the call to .each
-def echo_all(list) {
-    list.each { item ->
-        echo "Hello ${item}"
-    }
-}
-// outputs all items as expected
-
-@NonCPS
-def loop_of_sh(list) {
-    list.each { item ->
-        sh "echo Hello ${item}"
+     list.each { item ->
+        sh "echo Hello test ${item}"
        environment{
          ENV = 'test'
          RETRY = '80'
        }
-
-         echo 'Deploying to Test'
          sh 'apimcli import-api -f  ${item} -e $ENV -k --preserve-provider=false --update --verbose'
-
+     }
     }
-}
-// outputs only the first item
 
-@NonCPS
-def loop_with_preceding_sh(list) {
-    sh "echo Going to echo a list"
-    list.each { item ->
-        sh "echo Hello ${item}"
+    stage('Deploying to Staging') {
+      list.each { item ->
+        sh "echo Hello staging ${item}"
+       environment{
+         ENV = 'test'
+         RETRY = '80'
+       }
+         sh 'apimcli import-api -f  ${item} -e $ENV -k --preserve-provider=false --update --verbose'
+      }
     }
-}
-// outputs only the "Going to echo a list" bit
 
-//No NonCPS required
-def traditional_int_for_loop(list) {
-    sh "echo Going to echo a list"
-    for (int i = 0; i < list.size(); i++) {
-        sh "echo Hello ${list[i]}"
-    }
+    stage('Deploying to Production') {
+      list.each { item ->
+        sh "echo Hello prod ${item}"
+       environment{
+         ENV = 'test'
+         RETRY = '80'
+       }
+         sh 'apimcli import-api -f  ${item} -e $ENV -k --preserve-provider=false --update --verbose'
+     }
+   }
 }
