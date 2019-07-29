@@ -1,0 +1,12 @@
+{
+  "name": "postman-newman-jenkins",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "api-test": "newman run testAPIs.postman_collection.json"
+  },
+  "author": "madeesha",
+  "dependencies": {
+    "newman": "^4.5.1"
+  }
+}
