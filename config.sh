@@ -40,3 +40,5 @@ apimcli add-env -n prod \
                       --app_list https://localhost:9443/api/am/store/v0.14/applications
 echo 'logging into prod'
 apimcli login prod -u $USERNAME -p $PASSWORD -k
+
+apimcli list envs
