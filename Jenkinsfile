@@ -39,10 +39,10 @@ def loop_of_sh(list) {
          ENV = 'test'
          RETRY = '80'
        }
-       steps {
+
          echo 'Deploying to Test'
          sh 'apimcli import-api -f  ${item} -e $ENV -k --preserve-provider=false --update --verbose'
-       }
+
     }
 }
 // outputs only the first item
