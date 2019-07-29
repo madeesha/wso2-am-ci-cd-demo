@@ -1,5 +1,5 @@
 
-abcs = ['./SampleAPI' , './SwaggerPetstore']
+apiNames = ['./SampleAPI' , './SwaggerPetstore']
 
 node('master') {
     stage('Setup APIM Environments') {
@@ -15,12 +15,12 @@ node('master') {
               ENV = 'test'
               RETRY = '80'
          }
-            traditional_int_for_loop(abcs)
+            deploying_to_test(apiNames)
     }
 
 }
 
-def traditional_int_for_loop(list) {
+def deploying_to_test(list) {
     env.RETRY = '80'
     sh "echo Going to echo a list"
     for (int i = 0; i < list.size(); i++) {
