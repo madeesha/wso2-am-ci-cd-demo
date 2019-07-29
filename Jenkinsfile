@@ -11,20 +11,27 @@ node('master') {
     }
 
     stage('Deploying to Test') {
-         environment{
-              ENV = 'test'
-              RETRY = '80'
-         }
             deploying_to_test(apiNames)
+    }
+
+    stage('Deploying to Staging') {
+                deploying_to_staging(apiNames)
     }
 
 }
 
 def deploying_to_test(list) {
     env.RETRY = '80'
-    sh "echo Going to echo a list"
     for (int i = 0; i < list.size(); i++) {
-        sh "echo Hello ${list[i]}"
+        sh "echo deploying API ${list[i]} to test environment"
         sh "apimcli import-api -f ${list[i]} -e test -k --preserve-provider=false --update --verbose"
+    }
+}
+
+def deploying_to_staging(list) {
+    env.RETRY = '80'
+    for (int i = 0; i < list.size(); i++) {
+        sh "echo deploying API ${list[i]} to staging environment"
+        sh "apimcli import-api -f ${list[i]} -e staging -k --preserve-provider=false --update --verbose"
     }
 }
