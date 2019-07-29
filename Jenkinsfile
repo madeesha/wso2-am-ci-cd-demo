@@ -21,6 +21,7 @@ node('master') {
 }
 
 def traditional_int_for_loop(list) {
+    env.RETRY = '80'
     sh "echo Going to echo a list"
     for (int i = 0; i < list.size(); i++) {
         sh "echo Hello ${list[i]}"
