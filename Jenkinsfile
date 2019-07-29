@@ -24,6 +24,6 @@ def traditional_int_for_loop(list) {
      }
     for (int i = 0; i < list.size(); i++) {
         sh "echo Hello ${list[i]}"
-        sh 'apimcli import-api -f ./SampleAPI -e $ENV -k --preserve-provider=false --update --verbose'
+        sh 'apimcli import-api -f ./SampleAPI -e test -k --preserve-provider=false --update --verbose'
     }
 }
