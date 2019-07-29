@@ -1,21 +1,24 @@
-// Related to https://issues.jenkins-ci.org/browse/JENKINS-26481
 
-abcs = ['a', 'b', 'c']
+abcs = ['./SampleAPI' , './SwaggerPetstore']
 
 node('master') {
-    stage('Test 1: loop of echo statements') {
-        echo_all(abcs)
+    stage('Setup APIM Environments') {
+        steps{
+           withCredentials([usernamePassword(credentialsId: 'apim', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+             sh './config.sh'
+           }
+        }
     }
-    
-    stage('Test 2: loop of sh commands') {
+
+    stage('Deploying to Test') {
         loop_of_sh(abcs)
     }
-    
-    stage('Test 3: loop with preceding SH') {
+
+    stage('Deploying to Staging') {
         loop_with_preceding_sh(abcs)
     }
-    
-    stage('Test 4: traditional for loop') {
+
+    stage('Deploying to Production') {
         traditional_int_for_loop(abcs)
     }
 }
@@ -32,6 +35,14 @@ def echo_all(list) {
 def loop_of_sh(list) {
     list.each { item ->
         sh "echo Hello ${item}"
+       environment{
+         ENV = 'test'
+         RETRY = '80'
+       }
+       steps {
+         echo 'Deploying to Test'
+         sh 'apimcli import-api -f  ${item} -e $ENV -k --preserve-provider=false --update --verbose'
+       }
     }
 }
 // outputs only the first item
