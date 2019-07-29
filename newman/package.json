@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "api-test": "newman run testAPIs.postman_collection.json"
+    "api-test": "newman run Intro to writing tests - with examples.postman_collection.json"
   },
   "author": "madeesha",
   "dependencies": {

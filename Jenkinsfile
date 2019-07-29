@@ -14,6 +14,12 @@ node('master') {
             deploying_to_test(apiNames)
     }
 
+    stage ('Testing the test environment') {
+          dir("newman") {
+            sh 'npm install'
+           sh 'npm run api-test'          }
+    }
+
     stage('Deploying to Staging') {
                 deploying_to_staging(apiNames)
     }
