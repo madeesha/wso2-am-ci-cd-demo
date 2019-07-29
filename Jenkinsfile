@@ -11,7 +11,11 @@ node('master') {
     }
 
     stage('Deploying to Test') {
-             traditional_int_for_loop(abcs)
+         environment{
+              ENV = 'test'
+              RETRY = '80'
+         }
+            traditional_int_for_loop(abcs)
     }
 
 }
