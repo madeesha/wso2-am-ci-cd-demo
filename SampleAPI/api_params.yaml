@@ -4,16 +4,16 @@ environments:
       production:
         url: 'https://localhost:9443/am/sample/pizzashack/v1/api/'
         config:
-          retryTimeOut: $RETRY
+          retryTimeOut: 80
   - name: prod
     endpoints:
       production:
         url: 'https://localhost:9443/am/sample/pizzashack/v1/api/'
         config:
-          retryTimeOut: $RETRY
+          retryTimeOut: 80
   - name: staging
     endpoints:
       production:
         url: 'https://localhost:9444/am/sample/pizzashack/v1/api/'
         config:
-          retryTimeOut: $RETRY
+          retryTimeOut: 80
